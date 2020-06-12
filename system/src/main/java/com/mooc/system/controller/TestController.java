@@ -1,7 +1,7 @@
 package com.mooc.system.controller;
 
-import com.mooc.system.domain.Test;
-import com.mooc.system.service.TestService;
+import com.mooc.server.domain.Test;
+import com.mooc.server.service.TestService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

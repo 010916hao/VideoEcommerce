@@ -36,7 +36,7 @@
 				<scope>import</scope>
 			</dependency>
 
-            <!-- 集成mybatis -->
+            <!-- Integrate mybatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -47,7 +47,15 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>5.1.37</version>
             </dependency>
+
+            <!-- server dependency -->
+            <dependency>
+                <groupId>com.mooc</groupId>
+                <artifactId>server</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 		</dependencies>
+
 
 	</dependencyManagement>
 

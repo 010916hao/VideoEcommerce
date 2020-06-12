@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @SpringBootApplication//can scan all packages in current directory
 @EnableEurekaClient
-@MapperScan("com.mooc.system.mapper")
+@MapperScan("com.mooc.server.mapper")
 public class SystemApplication {
 
 //	public static void main(String[] args) {
