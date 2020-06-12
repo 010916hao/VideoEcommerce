@@ -158,7 +158,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mooc.server.domain.Test">
     update test
-    set `name` = #{name,jdbcType=VARCHAR}
+    set `name` = #{name ,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

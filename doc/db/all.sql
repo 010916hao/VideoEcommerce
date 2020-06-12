@@ -7,3 +7,4 @@ CREATE TABLE `test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 comment='test';
 
 insert into `test` (`id`, `name`) values(1, 'yihao');
+insert into `test` (`id`, `name`) values(2, 'liu');
