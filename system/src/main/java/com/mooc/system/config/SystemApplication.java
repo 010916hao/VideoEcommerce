@@ -1,4 +1,4 @@
-package com.mooc;
+package com.mooc.system.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @SpringBootApplication//can scan all packages in current directory
 @EnableEurekaClient
 @MapperScan("com.mooc.server.mapper")
+@ComponentScan("com.mooc")
 public class SystemApplication {
 
 //	public static void main(String[] args) {
