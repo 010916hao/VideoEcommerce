@@ -50,8 +50,9 @@
                             <span class="lbl"> Remember Me</span>
                           </label>
 
-                          <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
-                            <i class="ace-icon fa fa-key"></i>
+                          <button type="button"
+                                  class="width-35 pull-right btn btn-sm btn-primary"
+                                  v-on:click="login()">
                             <span class="bigger-110">Login</span>
                           </button>
                         </div>
@@ -100,5 +101,10 @@
 
   export default {
     name: 'app',
+    methods: {
+      login() {
+        this.$router.push("/admin")
+      }
+    }
   }
 </script>
