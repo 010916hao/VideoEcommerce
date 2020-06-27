@@ -8,3 +8,12 @@ CREATE TABLE `test` (
 
 insert into `test` (`id`, `name`) values(1, 'yihao');
 insert into `test` (`id`, `name`) values(2, 'liu');
+
+-- Chapter
+drop table if exists `chapter`;
+create table `chapter` (
+    `id` char(8) not null comment 'id',
+    `course_id` char(8) comment 'course id',
+    `name` varchar(50) comment 'course name',
+    primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='chapter';
