@@ -979,8 +979,16 @@
     name: "chapter",
     mounted: function() {
       // this.$parent.activeSidebar("business-chapter-sidebar");
+      let _this = this;
+      _this.list();
     },
     methods: {
+      list() {
+        let _this = this;
+        _this.$ajax.get('http://127.0.0.1:9002/business/admin/chapter/list').then((response)=>{
+          console.log("Results of quering chapters：", response);
+        })
+      }
     }
   }
 </script>
