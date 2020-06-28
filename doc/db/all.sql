@@ -1,5 +1,5 @@
+-- test
 drop table if exists `test`;
-
 CREATE TABLE `test` (
   `id` char(8) DEFAULT '' NOT NULL,
   `name` varchar(255) DEFAULT '',
