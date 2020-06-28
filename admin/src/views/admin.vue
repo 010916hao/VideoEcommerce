@@ -357,7 +357,7 @@
 
         <ul class="nav nav-list">
           <li class="">
-            <a href="index.html">
+            <a href="/admin/welcome">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> Welcome </span>
             </a>
