@@ -1,5 +1,6 @@
 package com.mooc.server.service;
 
+import com.github.pagehelper.PageHelper;
 import com.mooc.server.domain.Chapter;
 import com.mooc.server.domain.ChapterExample;
 import com.mooc.server.dto.ChapterDto;
@@ -18,6 +19,9 @@ public class ChapterService {
     private ChapterMapper chapterMapper;
 
     public List<ChapterDto> list() {
+        //call startPage method means when the first following
+        // select sql is executed, the results will be paginated.
+        PageHelper.startPage(1, 2);
         ChapterExample chapterExample = new ChapterExample();
         //chapterExample.createCriteria().andIdEqualTo("1");
 //        chapterExample.setOrderByClause("id asc");
