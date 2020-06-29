@@ -35,7 +35,6 @@ public class ChapterService {
         List<ChapterDto> chapterDtoList = new ArrayList<>();
         PageInfo<Chapter> pageInfo = new PageInfo<>(chapterList);
         pageDto.setTotal(pageInfo.getTotal());
-        //pageDto.setTotal(chapterList.size());
         for (int i = 0, l = chapterList.size(); i < l; i++){
             Chapter chapter = chapterList.get(i);
             ChapterDto chapterDto = new ChapterDto();
