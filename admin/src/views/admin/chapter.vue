@@ -6,6 +6,7 @@
         Reload
       </button>
     </p>
+
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
@@ -84,13 +85,16 @@
 
       </tbody>
     </table>
+    <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="5"></pagination>
   </div>
 
 
 </template>
 
 <script>
+  import Pagination from "../../components/Pagination";
   export default {
+    components: {Pagination},
     name: "chapter",
     data: function() {
       return {
@@ -100,17 +104,19 @@
     mounted: function() {
       // this.$parent.activeSidebar("business-chapter-sidebar");
       let _this = this;
-      _this.list();
+      this.$refs.pagination.size = 5;
+      _this.list(1);
     },
     methods: {
-      list() {
+      list(page) {
         let _this = this;
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
-          page: 1,
-          size: 2
+          page: page,
+          size: _this.$refs.pagination.size
         }).then((response)=>{
           console.log("Results of querying chapters：", response);
           _this.chapters = response.data.list;
+          _this.$refs.pagination.render(page, response.data.total);
         })
       }
     }
