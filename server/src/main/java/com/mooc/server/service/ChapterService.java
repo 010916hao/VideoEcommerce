@@ -8,9 +8,9 @@ import com.mooc.server.domain.ChapterExample;
 import com.mooc.server.dto.ChapterDto;
 import com.mooc.server.dto.PageDto;
 import com.mooc.server.mapper.ChapterMapper;
+import com.mooc.server.util.UuidUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -45,4 +45,16 @@ public class ChapterService {
         pageDto.setList(chapterDtoList);
 
     }
+
+    public void save(ChapterDto chapterDto) {
+        chapterDto.setId(UuidUtil.getShortUuid());
+        Chapter chapter = new Chapter();
+        //BeanUtils is a spring utility class, which is used for the copy of entities.
+        BeanUtils.copyProperties(chapterDto, chapter);
+        chapterMapper.insert(chapter);
+    }
+
+
+
+
 }

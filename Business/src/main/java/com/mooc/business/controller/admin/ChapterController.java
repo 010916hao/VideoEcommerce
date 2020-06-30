@@ -1,6 +1,7 @@
 package com.mooc.business.controller.admin;
 
 
+import com.mooc.server.dto.ChapterDto;
 import com.mooc.server.dto.PageDto;
 import com.mooc.server.service.ChapterService;
 import org.slf4j.Logger;
@@ -27,5 +28,12 @@ public class ChapterController {
         LOG.info("PageDto: {}", pageDto);
         chapterService.list(pageDto);
         return pageDto;
+    }
+
+    @RequestMapping("/save")
+    public ChapterDto chapter(@RequestBody ChapterDto chapterDto) {
+        LOG.info("ChapterDto: {}", chapterDto);
+        chapterService.save(chapterDto);
+        return chapterDto;
     }
 }
