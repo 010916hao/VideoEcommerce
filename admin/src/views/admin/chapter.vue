@@ -1,6 +1,11 @@
 <template>
   <div>
     <p>
+      <button v-on:click="add()" class="btn btn-primary btn-round">
+        <i class="ace-icon fa fa-edit"></i>
+        Add
+      </button>
+      &nbsp;
       <button v-on:click="list()" class="btn btn-success btn-round">
         <i class="ace-icon fa fa-refresh"></i>
         Reload
@@ -86,6 +91,37 @@
       </tbody>
     </table>
     <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="5"></pagination>
+
+    <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Form</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">courseid</label>
+                <div class="col-sm-10">
+                  <input class="form-control" placeholder="courseid">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">coursename</label>
+                <div class="col-sm-10">
+                  <input class="form-control" placeholder="coursename">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
   </div>
 
 
@@ -93,6 +129,7 @@
 
 <script>
   import Pagination from "../../components/Pagination";
+
   export default {
     components: {Pagination},
     name: "chapter",
@@ -108,6 +145,10 @@
       _this.list(1);
     },
     methods: {
+      add() {
+        let _this = this;
+        $(".modal").modal("show");
+      },
       list(page) {
         let _this = this;
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
