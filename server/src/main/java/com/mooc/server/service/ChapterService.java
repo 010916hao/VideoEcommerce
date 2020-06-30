@@ -8,6 +8,7 @@ import com.mooc.server.domain.ChapterExample;
 import com.mooc.server.dto.ChapterDto;
 import com.mooc.server.dto.PageDto;
 import com.mooc.server.mapper.ChapterMapper;
+import com.mooc.server.util.CopyUtil;
 import com.mooc.server.util.UuidUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -32,25 +33,26 @@ public class ChapterService {
         //chapterExample.createCriteria().andIdEqualTo("1");
         //chapterExample.setOrderByClause("id asc");
         List<Chapter> chapterList = chapterMapper.selectByExample(chapterExample);
-        List<ChapterDto> chapterDtoList = new ArrayList<>();
         PageInfo<Chapter> pageInfo = new PageInfo<>(chapterList);
         pageDto.setTotal(pageInfo.getTotal());
-        for (int i = 0, l = chapterList.size(); i < l; i++){
-            Chapter chapter = chapterList.get(i);
-            ChapterDto chapterDto = new ChapterDto();
-            //BeanUtils is a spring utility class, which is used for the copy of entities.
-            BeanUtils.copyProperties(chapter, chapterDto);
-            chapterDtoList.add(chapterDto);
-        }
-        pageDto.setList(chapterDtoList);
 
+        List<ChapterDto> chapterDtoList = CopyUtil.copyList(chapterList, ChapterDto.class);
+//        for (int i = 0, l = chapterList.size(); i < l; i++){
+//            Chapter chapter = chapterList.get(i);
+//            ChapterDto chapterDto = new ChapterDto();
+//            //BeanUtils is a spring utility class, which is used for the copy of entities.
+//            BeanUtils.copyProperties(chapter, chapterDto);
+//            chapterDtoList.add(chapterDto);
+//        }
+        pageDto.setList(chapterDtoList);
     }
 
     public void save(ChapterDto chapterDto) {
         chapterDto.setId(UuidUtil.getShortUuid());
-        Chapter chapter = new Chapter();
+//        Chapter chapter = new Chapter();
         //BeanUtils is a spring utility class, which is used for the copy of entities.
-        BeanUtils.copyProperties(chapterDto, chapter);
+//        BeanUtils.copyProperties(chapterDto, chapter);
+        Chapter chapter = CopyUtil.copy(chapterDto, Chapter.class);
         chapterMapper.insert(chapter);
     }
 
