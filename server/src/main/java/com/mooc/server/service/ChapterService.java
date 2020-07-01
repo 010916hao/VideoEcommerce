@@ -3,6 +3,7 @@ package com.mooc.server.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.util.StringUtil;
 import com.mooc.server.domain.Chapter;
 import com.mooc.server.domain.ChapterExample;
 import com.mooc.server.dto.ChapterDto;
@@ -47,12 +48,20 @@ public class ChapterService {
     }
 
     public void save(ChapterDto chapterDto) {
-        chapterDto.setId(UuidUtil.getShortUuid());
-//        Chapter chapter = new Chapter();
-        //BeanUtils is a spring utility class, which is used for the copy of entities.
-//        BeanUtils.copyProperties(chapterDto, chapter);
         Chapter chapter = CopyUtil.copy(chapterDto, Chapter.class);
+        if (StringUtil.isEmpty(chapterDto.getId()))
+            insert(chapter);
+        else
+            update(chapter);
+    }
+
+    private void insert(Chapter chapter) {
+        chapter.setId(UuidUtil.getShortUuid());
         chapterMapper.insert(chapter);
+    }
+
+    private void update(Chapter chapter) {
+        chapterMapper.updateByPrimaryKey(chapter);
     }
 
 
