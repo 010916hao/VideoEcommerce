@@ -7,6 +7,7 @@ import com.mooc.server.dto.ResponseDto;
 import com.mooc.server.service.ChapterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +40,14 @@ public class ChapterController {
         ResponseDto responseDto = new ResponseDto();
         chapterService.save(chapterDto);
         responseDto.setContent(chapterDto);
+        return responseDto;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public ResponseDto delChapter(@PathVariable String id) {
+        LOG.info("id: {}", id);
+        ResponseDto responseDto = new ResponseDto();
+        chapterService.delete(id);
         return responseDto;
     }
 }
