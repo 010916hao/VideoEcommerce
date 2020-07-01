@@ -27,7 +27,6 @@ public class ChapterService {
     public void list(PageDto pageDto) {
         //call startPage method means when the first following
         //select sql is executed, the results will be paginated.
-        //PageHelper.startPage(1, 2);
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         ChapterExample chapterExample = new ChapterExample();
         //chapterExample.createCriteria().andIdEqualTo("1");

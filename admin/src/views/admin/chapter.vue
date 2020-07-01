@@ -92,7 +92,7 @@
     </table>
     <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="5"></pagination>
 
-    <div class="modal fade" tabindex="-1" role="dialog">
+    <div id="form_modal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -148,7 +148,7 @@
     methods: {
       add() {
         let _this = this;
-        $(".modal").modal("show");
+        $("#form_modal").modal("show");
       },
 
       list(page) {
@@ -158,16 +158,23 @@
           size: _this.$refs.pagination.size
         }).then((response)=>{
           console.log("Results of querying chapters：", response);
-          _this.chapters = response.data.list;
-          _this.$refs.pagination.render(page, response.data.total);
+          let resp = response.data;
+          _this.chapters = resp.content.list;
+          _this.$refs.pagination.render(page, resp.content.total);
         })
       },
 
-      save(page) {
+      save() {
         let _this = this;
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save', _this.chapter).
         then((response)=>{
           console.log("Save a new chapter：", response);
+          let resp = response.data;
+          if (resp.success) {
+            $("#form_modal").modal("hide");
+            _this.list(1);
+          }
+
         })
       }
     }
