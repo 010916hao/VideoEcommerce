@@ -176,6 +176,12 @@
 
       save() {
         let _this = this;
+        // save validation
+        if (!Validator.require(_this.chapter.courseId, "Course ID")
+          || !Validator.require(_this.chapter.name, "Name")
+          || !Validator.length(_this.chapter.courseId, "Course ID", 1, 8)) {
+          return;
+        }
         Loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save', _this.chapter).
         then((response)=>{
