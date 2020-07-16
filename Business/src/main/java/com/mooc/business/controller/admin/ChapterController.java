@@ -7,10 +7,7 @@ import com.mooc.server.dto.ResponseDto;
 import com.mooc.server.service.ChapterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -25,7 +22,7 @@ public class ChapterController {
     private ChapterService chapterService;
 
     //we need @RequestBody annotation to tell controller that the information is passing through by JSON
-    @RequestMapping("/list")
+    @PostMapping("/list")
     public ResponseDto chapter(@RequestBody PageDto pageDto) {
         LOG.info("PageDto: {}", pageDto);
         ResponseDto responseDto = new ResponseDto();
@@ -34,8 +31,8 @@ public class ChapterController {
         return responseDto;
     }
 
-    @RequestMapping("/save")
-    public ResponseDto chapter(@RequestBody ChapterDto chapterDto) {
+    @PostMapping("/save")
+    public ResponseDto save(@RequestBody ChapterDto chapterDto) {
         LOG.info("ChapterDto: {}", chapterDto);
         ResponseDto responseDto = new ResponseDto();
         chapterService.save(chapterDto);
@@ -43,8 +40,8 @@ public class ChapterController {
         return responseDto;
     }
 
-    @RequestMapping("/delete/{id}")
-    public ResponseDto delChapter(@PathVariable String id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseDto save(@PathVariable String id) {
         LOG.info("id: {}", id);
         ResponseDto responseDto = new ResponseDto();
         chapterService.delete(id);
