@@ -11,12 +11,8 @@ import com.mooc.server.dto.PageDto;
 import com.mooc.server.mapper.ChapterMapper;
 import com.mooc.server.util.CopyUtil;
 import com.mooc.server.util.UuidUtil;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

@@ -184,6 +184,7 @@
           }
 
         })
+        toast.success("Save successfully!");
       },
 
       del(id) {
