@@ -18,13 +18,14 @@ import javax.annotation.Resource;
 public class ChapterController {
 
     private static final Logger LOG = LoggerFactory.getLogger(ChapterController.class);
+    public static final String BUSINESS_NAME = "Chapter";
 
     @Resource
     private ChapterService chapterService;
 
     //we need @RequestBody annotation to tell controller that the information is passing through by JSON
     @PostMapping("/list")
-    public ResponseDto chapter(@RequestBody PageDto pageDto) {
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         LOG.info("PageDto: {}", pageDto);
         ResponseDto responseDto = new ResponseDto();
         chapterService.list(pageDto);
@@ -48,7 +49,7 @@ public class ChapterController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseDto save(@PathVariable String id) {
+    public ResponseDto delete(@PathVariable String id) {
         LOG.info("id: {}", id);
         ResponseDto responseDto = new ResponseDto();
         chapterService.delete(id);
