@@ -176,7 +176,7 @@
 
       save() {
         let _this = this;
-        // save validation
+        //save validation
         if (!Validator.require(_this.chapter.courseId, "Course ID")
           || !Validator.require(_this.chapter.name, "Name")
           || !Validator.length(_this.chapter.courseId, "Course ID", 1, 8)) {
@@ -191,6 +191,8 @@
           if (resp.success) {
             $("#form_modal").modal("hide");
             _this.list(1);
+          } else {
+            Toast.warning(resp.message);
           }
 
         })
