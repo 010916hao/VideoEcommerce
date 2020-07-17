@@ -1,4 +1,4 @@
-package com.mooc.business.controller.admin;
+package com.mooc.${module}.controller.admin;
 
 
 import com.mooc.server.dto.${Domain}Dto;

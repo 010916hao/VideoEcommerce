@@ -1,26 +1,60 @@
 package com.mooc.server.dto;
 
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class SectionDto {
+
+    /**
+     * id
+     */
     private String id;
 
+    /**
+     * Title
+     */
     private String title;
 
+    /**
+     * Course|course.id
+     */
     private String courseId;
 
+    /**
+     * Chapter|chapter.id
+     */
     private String chapterId;
 
+    /**
+     * Video
+     */
     private String video;
 
+    /**
+     * time|unit second
+     */
     private Integer time;
 
+    /**
+     * charge|C charge；F free
+     */
     private String charge;
 
+    /**
+     * sort
+     */
     private Integer sort;
 
+    /**
+     * create time
+     */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createdAt;
 
+    /**
+     * modify time
+     */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updatedAt;
 
     public String getId() {
@@ -103,6 +137,7 @@ public class SectionDto {
         this.updatedAt = updatedAt;
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -122,4 +157,5 @@ public class SectionDto {
         sb.append("]");
         return sb.toString();
     }
+
 }
