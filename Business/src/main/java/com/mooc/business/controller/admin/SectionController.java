@@ -44,7 +44,10 @@ public class SectionController {
         LOG.info("SectionDto: {}", sectionDto);
 
         //Save validation for length and Null
-
+        ValidatorUtil.require(sectionDto.getTitle(), "title");
+        ValidatorUtil.length(sectionDto.getTitle(), "title", 1, 50);
+        System.out.println("video validation");
+        ValidatorUtil.length(sectionDto.getVideo(), "video", 1, 200);
         ResponseDto responseDto = new ResponseDto();
         sectionService.save(sectionDto);
         responseDto.setContent(sectionDto);

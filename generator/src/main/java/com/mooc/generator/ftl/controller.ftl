@@ -44,7 +44,14 @@ public class ${Domain}Controller {
         LOG.info("${Domain}Dto: {}", ${domain}Dto);
 
         //Save validation for length and Null
-
+<#list fieldList as field>
+    <#if !field.nullAble>
+        ValidatorUtil.require(${domain}Dto.get${field.nameBigHump}(), "${field.name}");
+    </#if>
+    <#if (field.length > 0)>
+        ValidatorUtil.length(${domain}Dto.get${field.nameBigHump}(), "${field.name}", 1, ${field.length});
+    </#if>
+</#list>
         ResponseDto responseDto = new ResponseDto();
         ${domain}Service.save(${domain}Dto);
         responseDto.setContent(${domain}Dto);

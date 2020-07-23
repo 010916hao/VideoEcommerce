@@ -1,6 +1,6 @@
 Tool = {
   /**
-   * 空校验 null或""都返回true
+   * null or "" return true
    */
   isEmpty: function (obj) {
     if ((typeof obj == 'string')) {
@@ -11,14 +11,14 @@ Tool = {
   },
 
   /**
-   * 非空校验
+   * NOT NULL VALIDATION
    */
   isNotEmpty: function (obj) {
     return !this.isEmpty(obj);
   },
 
   /**
-   * 长度校验
+   * LENGTH VALIDATION
    */
   isLength: function (str, min, max) {
     return $.trim(str).length >= min && $.trim(str).length <= max;

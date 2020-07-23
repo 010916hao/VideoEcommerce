@@ -14,8 +14,6 @@ import org.dom4j.io.SAXReader;
 public class ServerGenerator {
 
     static String MODULE = "business";
-    //static String Domain = "Section";
-    //static String domain = "section";
     static String toServicePath = "server/src/main/java/com/mooc/server/service/";
     static String toControllerPath = MODULE + "/src/main/java/com/mooc/" + MODULE + "/controller/admin/";
     static String toDtoPath = "server/src/main/java/com/mooc/server/dto/";

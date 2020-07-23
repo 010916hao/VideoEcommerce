@@ -64,6 +64,7 @@ public class DbUtil {
                 String columnName = rs.getString("Field");
                 String type = rs.getString("Type");
                 String comment = rs.getString("Comment");
+                String nullable = rs.getString("Null");
                 Field field = new Field();
                 field.setName(columnName);
                 field.setNameHump(lineToHump(columnName));
@@ -71,6 +72,13 @@ public class DbUtil {
                 field.setType(type);
                 field.setJavaType(DbUtil.sqlTypeToJavaType(rs.getString("Type")));
                 field.setComment(comment);
+                field.setNullAble("YES".equals(nullable));
+                if (type.toUpperCase().contains("varchar".toUpperCase())) {
+                    String lengthStr = type.substring(type.indexOf("(") + 1, type.length() - 1);
+                    field.setLength(Integer.valueOf(lengthStr));
+                } else {
+                    field.setLength(0);
+                }
 //                if (comment.contains("|")) {
 //                    field.setNameCn(comment.substring(0, comment.indexOf("|")));
 //                } else {

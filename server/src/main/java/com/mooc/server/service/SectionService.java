@@ -52,7 +52,6 @@ public class SectionService {
     */
     private void insert(Section section) {
         section.setId(UuidUtil.getShortUuid());
-        System.out.println("I am here in service");
         sectionMapper.insert(section);
     }
 
