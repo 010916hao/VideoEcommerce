@@ -23,8 +23,6 @@
         <th>time</th>
         <th>charge</th>
         <th>sort</th>
-        <th>created_at</th>
-        <th>updated_at</th>
         <th>Operations</th>
       </tr>
       </thead>
@@ -32,16 +30,14 @@
       <tbody>
       <tr v-for="section in sections">
 
-        <td>{{section.id}}</td>
-        <td>{{section.title}}</td>
-        <td>{{section.courseId}}</td>
-        <td>{{section.chapterId}}</td>
-        <td>{{section.video}}</td>
-        <td>{{section.time}}</td>
-        <td>{{section.charge}}</td>
-        <td>{{section.sort}}</td>
-        <td>{{section.createdAt}}</td>
-        <td>{{section.updatedAt}}</td>
+                <td>{{section.id}}</td>
+                <td>{{section.title}}</td>
+                <td>{{section.courseId}}</td>
+                <td>{{section.chapterId}}</td>
+                <td>{{section.video}}</td>
+                <td>{{section.time}}</td>
+                <td>{{section.charge}}</td>
+                <td>{{section.sort}}</td>
 
         <td>
           <div class="hidden-sm hidden-xs btn-group">
@@ -117,64 +113,53 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">id</label>
-                    <div class="col-sm-10">
-                        <input v-model="section.id" class="form-control">
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">title</label>
                     <div class="col-sm-10">
                         <input v-model="section.title" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">course_id</label>
                     <div class="col-sm-10">
                         <input v-model="section.courseId" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">chapter_id</label>
                     <div class="col-sm-10">
                         <input v-model="section.chapterId" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">video</label>
                     <div class="col-sm-10">
                         <input v-model="section.video" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">time</label>
                     <div class="col-sm-10">
                         <input v-model="section.time" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">charge</label>
                     <div class="col-sm-10">
                         <input v-model="section.charge" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">sort</label>
                     <div class="col-sm-10">
                         <input v-model="section.sort" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">created_at</label>
-                    <div class="col-sm-10">
-                        <input v-model="section.createdAt" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">updated_at</label>
-                    <div class="col-sm-10">
-                        <input v-model="section.updatedAt" class="form-control">
                     </div>
                 </div>
             </form>
@@ -241,9 +226,12 @@
         let _this = this;
         //save validation
         if (1 != 1
+
           || !Validator.require(_this.section.title, "title")
           || !Validator.length(_this.section.title, "title", 1, 50)
           || !Validator.length(_this.section.video, "video", 1, 200)
+
+
         ) {
           return;
         }

@@ -20,8 +20,12 @@
 <#--        <th>Course Id</th>-->
 <#--        <th>Operations</th>-->
 <#--      </tr>-->
-      <tr><#list fieldList as field>
-        <th>${field.name}</th></#list>
+      <tr>
+  <#list fieldList as field>
+      <#if field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+        <th>${field.name}</th>
+      </#if>
+  </#list>
         <th>Operations</th>
       </tr>
       </thead>
@@ -29,11 +33,10 @@
       <tbody>
       <tr v-for="${domain} in ${domain}s">
 
-<#--        <td>{{${domain}.id}}</td>-->
-<#--        <td>{{${domain}.name}}</td>-->
-<#--        <td>{{${domain}.courseId}}</td>-->
         <#list fieldList as field>
-        <td>{{${domain}.${field.nameHump}}}</td>
+            <#if field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+                <td>{{${domain}.${field.nameHump}}}</td>
+            </#if>
         </#list>
 
         <td>
@@ -110,25 +113,17 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-<#--              <div class="form-group">-->
-<#--                <label class="col-sm-2 control-label">courseid</label>-->
-<#--                <div class="col-sm-10">-->
-<#--                  <input v-model="${domain}.courseId" class="form-control" placeholder="courseid">-->
-<#--                </div>-->
-<#--              </div>-->
-<#--              <div class="form-group">-->
-<#--                <label class="col-sm-2 control-label">coursename</label>-->
-<#--                <div class="col-sm-10">-->
-<#--                  <input v-model="${domain}.name" class="form-control" placeholder="coursename">-->
-<#--                </div>-->
-<#--              </div>-->
+
               <#list fieldList as field>
+               <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt">
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label">${field.name}</label>
                     <div class="col-sm-10">
                         <input v-model="${domain}.${field.nameHump}" class="form-control">
                     </div>
                 </div>
+               </#if>
               </#list>
             </form>
           </div>
@@ -195,11 +190,14 @@
         //save validation
         if (1 != 1
           <#list fieldList as field>
+          <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt" && field.nameHump!="sort">
+
           <#if !field.nullAble>
           || !Validator.require(_this.${domain}.${field.nameHump}, "${field.name}")
           </#if>
           <#if (field.length > 0)>
           || !Validator.length(_this.${domain}.${field.nameHump}, "${field.name}", 1, ${field.length})
+          </#if>
           </#if>
           </#list>
         ) {
